@@ -16,7 +16,8 @@
     "new": "node scripts/new-page.mjs",
     "screenshots": "node scripts/screenshots.mjs",
     "smoke": "node scripts/smoke.mjs",
-    "deploy:preview": "bash scripts/deploy-preview.sh"
+    "deploy:preview": "bash scripts/deploy-preview.sh",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "./package.json": "./package.json"
   },
   "files": [
+    "dist",
     "src",
     "production",
     "types",

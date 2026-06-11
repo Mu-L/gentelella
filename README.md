@@ -234,6 +234,30 @@ import 'gentelella/scss/v4/main.scss';
 
 Subpath exports: `gentelella/v4/*` (JS modules), `gentelella/scss/*` (styles), `gentelella/types` (TypeScript declarations).
 
+### CDN (jsDelivr)
+
+The package ships the pre-built `dist/` and the unbundled `src/`, so every file is reachable via [jsDelivr](https://www.jsdelivr.com/package/npm/gentelella) without a bundler. Useful for prototyping, design-system inspection, or pulling individual ES modules:
+
+```html
+<!-- Pull individual ES-module helpers — paths under src/v4/ are stable -->
+<script type="module">
+  import { showModal } from 'https://cdn.jsdelivr.net/npm/gentelella@4/src/v4/modal.js';
+  import { showToast } from 'https://cdn.jsdelivr.net/npm/gentelella@4/src/v4/toast.js';
+  showToast('Hello from CDN', { variant: 'success' });
+</script>
+```
+
+Browse the 58 built demo pages straight from CDN — every reference page renders with all assets resolved:
+
+```text
+https://cdn.jsdelivr.net/npm/gentelella@4/dist/production/index.html
+https://cdn.jsdelivr.net/npm/gentelella@4/dist/production/inbox.html
+https://cdn.jsdelivr.net/npm/gentelella@4/dist/production/kanban.html
+…
+```
+
+**Heads-up on hashing.** Vite emits content-hashed asset filenames in `dist/assets/` and `dist/js/` (`main-v4-DDS6x4g-.css` etc.), so direct CDN URLs for those chunks change on every release. The main `src/main-v4.js` entry also imports SCSS source, so it isn't browser-loadable — use it through your bundler. For an AdminLTE-style single-file `<script src>` drop-in with a stable URL, use the npm package with your own bundler instead. Gentelella v4's CDN strength is browsing the demo HTML pages and importing individual `src/v4/*` ES-module helpers.
+
 ### Scripts
 
 ```text
